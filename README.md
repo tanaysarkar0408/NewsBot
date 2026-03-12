@@ -81,6 +81,15 @@ python main.py --test-career
 2. **Structured LLM Outputs**: Enforcing Pydantic schemas in the Gemini API.
 3. **Agent-to-Agent (A2A) Handoff**: Dedicated Orchestrator agents cleanly receiving payloads from specialist agents.
 
+## 🗺️ Roadmap: Scaling to Multi-Tenant
+**Currently, the bot operates as a single-user instance. The next major architectural iteration will transform this into a scalable, multi-tenant service:**
+
+**Two-Way Communication:** Implement FastAPI webhooks to listen for incoming WhatsApp messages, allowing users to opt-in and select their specific tech niches (e.g., "Python Backend", "System Design", "Cloud").
+
+**Persistent Storage:** Integrate a relational database (PostgreSQL) to manage user profiles, active subscriptions, and article delivery history to prevent duplicate content.
+
+**Distributed Task Processing:** Migrate from local APScheduler cron jobs to an asynchronous task queue using Celery with a Redis or Kafka message broker. This will ensure reliable, decoupled message dispatching to hundreds of users simultaneously without bottlenecking the main application thread.
+
 ## 📝 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
